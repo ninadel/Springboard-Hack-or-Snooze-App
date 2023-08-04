@@ -81,6 +81,7 @@ function putStoriesOnPage() {
 }
 
 /** Handle deleting a story. */
+// TODO: Allow logged in users to remove a story. Once a story has been deleted, remove it from the DOM and let the API know its been deleted.
 
 async function deleteStory(evt) {
   console.debug("deleteStory");
@@ -97,6 +98,7 @@ async function deleteStory(evt) {
 $ownStories.on("click", ".trash-can", deleteStory);
 
 /** Handle submitting new story form. */
+// TODO: Write a function in stories.js that is called when users submit the form. Pick a good name for it. This function should get the data from the form, call the .addStory method you wrote, and then put that new story on the page.
 
 async function submitNewStory(evt) {
   console.debug("submitNewStory");
@@ -106,7 +108,7 @@ async function submitNewStory(evt) {
   const title = $("#create-title").val();
   const url = $("#create-url").val();
   const author = $("#create-author").val();
-  const username = currentUser.username
+  const username = currentUser.username;
   const storyData = { title, url, author, username };
 
   const story = await storyList.addStory(currentUser, storyData);
@@ -144,10 +146,11 @@ function putUserStoriesOnPage() {
 }
 
 /******************************************************************************
- * Functionality for favorites list and starr/un-starr a story
+ * Functionality for favorites list and starr/un-star a story
  */
 
 /** Put favorites list on page. */
+// TODO: Allow logged in users to see a separate list of favorited stories.
 
 function putFavoritesListOnPage() {
   console.debug("putFavoritesListOnPage");
@@ -168,6 +171,7 @@ function putFavoritesListOnPage() {
 }
 
 /** Handle favorite/un-favorite a story */
+// TODO: Allow logged in users to “favorite” and “un-favorite” a story. These stories should remain favorited when the page refreshes.
 
 async function toggleStoryFavorite(evt) {
   console.debug("toggleStoryFavorite");
@@ -175,7 +179,7 @@ async function toggleStoryFavorite(evt) {
   const $tgt = $(evt.target);
   const $closestLi = $tgt.closest("li");
   const storyId = $closestLi.attr("id");
-  const story = storyList.stories.find(s => s.storyId === storyId);
+  const story = storyList.stories.find((s) => s.storyId === storyId);
 
   // see if the item is already favorited (checking by presence of star)
   if ($tgt.hasClass("fas")) {
