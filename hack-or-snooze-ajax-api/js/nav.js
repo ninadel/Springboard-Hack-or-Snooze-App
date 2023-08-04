@@ -15,7 +15,7 @@ function navAllStories(evt) {
 $body.on("click", "#nav-all", navAllStories);
 
 /** Show story submit form on clicking story "submit" */
-
+// TODO: Write a function in nav.js that is called when users click that navbar link. Look at the other function names in that file that do similar things and pick something descriptive and similar.
 function navSubmitStoryClick(evt) {
   console.debug("navSubmitStoryClick", evt);
   hidePageComponents();
@@ -53,7 +53,7 @@ function navLoginClick(evt) {
   hidePageComponents();
   $loginForm.show();
   $signupForm.show();
-  $storiesContainer.hide()
+  $storiesContainer.hide();
 }
 
 $navLogin.on("click", navLoginClick);
@@ -72,7 +72,7 @@ $navUserProfile.on("click", navProfileClick);
 
 function updateNavOnLogin() {
   console.debug("updateNavOnLogin");
-  $(".main-nav-links").css('display', 'flex');;
+  $(".main-nav-links").css("display", "flex");
   $navLogin.hide();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
